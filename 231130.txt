@@ -1,0 +1,1 @@
+1:다 관계에서는 left join시 칼럼이 중복 인출 될 수 있다> DISTINCT나 GROUP BY사용하여 중복제거 가능
