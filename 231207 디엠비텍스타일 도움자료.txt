@@ -1,0 +1,26 @@
+Call Gf_GoToCell(spdMain, 1, i)
+
+
+'---------------------------------------------------------------------------------------
+' Procedure : Gf_GoToCell
+' Author    : LJH
+' Date      : 2018-04-13
+' Purpose   : 특정 셀로 이동하게 한다
+'---------------------------------------------------------------------------------------
+'
+Public Sub Gf_GoToCell(obj_Spd As vaSpread, ByVal Plng_Col As Long, ByVal Plng_Row As Long)
+   If Plng_Row > 0 And Plng_Col > 0 Then
+      obj_Spd.Row = Plng_Row
+      obj_Spd.Col = Plng_Col
+      obj_Spd.Row2 = Plng_Row
+      obj_Spd.Col2 = Plng_Col
+      obj_Spd.Action = 2
+   End If
+End Sub
+
+
+출고합계의 데이터를 들고 와야 해!!
+
+
+
+
