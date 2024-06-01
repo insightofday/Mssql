@@ -1,0 +1,70 @@
+--수주
+SELECT *
+FROM DS20
+WHERE OrderDate < '20240101'
+--수주상세
+SELECT A.*
+FROM DS21 AS A
+LEFT JOIN DS20 AS B ON A.OrderID = B.OrderID
+WHERE B.OrderDate < '20240101'
+--입고
+SELECT A.*
+FROM DS22 AS A
+LEFT JOIN DS20 AS B ON A.OrderID = B.OrderID
+WHERE B.OrderDate < '20240101'
+--입고상세
+SELECT A.*
+FROM DS23 AS A
+LEFT JOIN DS22 AS B ON A.OrderID = B.OrderID AND A.StuffID = B.StuffID
+LEFT JOIN DS20 AS C ON A.OrderID = C.OrderID
+WHERE C.OrderDate < '20240101'
+--검사
+SELECT A.*
+FROM DS24 AS A
+LEFT JOIN DS20 AS B ON A.OrderID = B.OrderID
+WHERE B.OrderDate < '20240101'
+--검사상세
+SELECT A.*
+FROM DS25 AS A
+LEFT JOIN DS24 AS B ON A.OrderID = B.OrderID AND A.RollID = B.RollID
+LEFT JOIN DS20 AS C ON A.OrderID = C.OrderID
+WHERE C.OrderDate < '20240101'
+--출고
+SELECT A.*
+FROM DS26 AS A
+LEFT JOIN DS20 AS B ON A.OrderID = B.OrderID
+WHERE B.OrderDate < '20240101'
+--출고상세
+SELECT A.*
+FROM DS27 AS A
+LEFT JOIN DS26 AS B ON A.OrderID = B.OrderID AND A.OutID = B.OutID
+LEFT JOIN DS20 AS C ON A.OrderID = C.OrderID
+WHERE C.OrderDate < '20240101'
+
+--NOT 상세 삭제
+DELETE FROM DS20, DS22,DS24,DS26동일( 수주-입고-검사-출고)
+WHERE OrderDate < '20240101'
+
+--수주상세삭제
+DELETE A
+FROM DS21 AS A
+LEFT JOIN DS20 AS B ON A.OrderID = B.OrderID
+WHERE B.OrderDate < '20240101'
+
+--입고상세 삭제
+DELETE A
+FROM DS23 A
+LEFT JOIN DS20 B ON A.orderID=B.OrderID
+LEFT JOIN DS 22 C ON C.Orderid=A.orderid AND C.stuffid=A.stuffid
+WHERE B.orderdate<'20240101'
+
+--검사상세 삭제
+DELETE A
+ FROm DS25 A
+LEFT JOIN DS20 B ON A.orderid=b.orderid
+LEFT JOIN DS24 c ON c.orderid=a.orderid and c.rollid=a.rollid
+
+--출고상세 삭제
+delete a from ds27 a
+left join ds20 b on a.orderid=b.orderid
+left join ds26 c on a.orderid=c.orderid and a.outid=c.outid
